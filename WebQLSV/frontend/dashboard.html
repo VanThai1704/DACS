@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container mt-5">
+    <h2>Xin chào, <span id="username"></span>!</h2>
+    <div id="roleSection"></div>
+    <a href="index.html" class="btn btn-secondary mt-3">Đăng xuất</a>
+</div>
+<script>
+    const username = localStorage.getItem('username');
+    const role = localStorage.getItem('role');
+    document.getElementById('username').innerText = username || 'Người dùng';
+    let html = '';
+    if (role === 'SinhVien') {
+        html = `
+            <a href="#" class="btn btn-info w-100 mb-2">Xem điểm</a>
+            <a href="#" class="btn btn-info w-100 mb-2">Xem lớp học</a>
+        `;
+    } else if (role === 'GiangVien') {
+        html = `
+            <a href="#" class="btn btn-info w-100 mb-2">Nhập điểm</a>
+            <a href="#" class="btn btn-info w-100 mb-2">Xem sinh viên</a>
+        `;
+    } else {
+        html = `
+            <a href="#" class="btn btn-info w-100 mb-2">Quản lý sinh viên</a>
+            <a href="#" class="btn btn-info w-100 mb-2">Quản lý giảng viên</a>
+            <a href="#" class="btn btn-info w-100 mb-2">Quản lý lớp học</a>
+            <a href="#" class="btn btn-info w-100 mb-2">Quản lý môn học</a>
+            <a href="#" class="btn btn-info w-100 mb-2">Quản lý điểm</a>
+        `;
+    }
+    document.getElementById('roleSection').innerHTML = html;
+</script>
+</body>
+</html> 
